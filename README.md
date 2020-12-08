@@ -1,0 +1,2 @@
+# EyepetizerSimulation
+Eyepetizer开源视频app模仿实现，使用Kotlin-jetpack方式实现
