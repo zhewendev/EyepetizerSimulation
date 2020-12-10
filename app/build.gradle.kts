@@ -35,12 +35,12 @@ android {
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation (Config.Implementation.KOTLIN_STDLIB)
-    implementation (Config.Implementation.CORE_KTX)
-    implementation (Config.Implementation.APP_COMPAT)
-    implementation (Config.Implementation.MATERIAL)
-    implementation (Config.Implementation.CONSTRAINT_LAYOUT)
-    testImplementation (Config.Implementation.JUNIT)
-    androidTestImplementation (Config.Implementation.EXT_JUNIT)
-    androidTestImplementation (Config.Implementation.ESPRESSO_CORE)
+    implementation (Config.AndroidX.KOTLIN_STDLIB)
+    implementation (Config.AndroidX.CORE_KTX)
+    implementation (Config.AndroidX.APP_COMPAT)
+    implementation (Config.AndroidX.MATERIAL)
+    implementation (Config.AndroidX.CONSTRAINT_LAYOUT)
+    testImplementation (Config.AndroidX.JUNIT)
+    androidTestImplementation (Config.AndroidX.EXT_JUNIT)
+    androidTestImplementation (Config.AndroidX.ESPRESSO_CORE)
 }
