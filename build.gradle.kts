@@ -2,7 +2,6 @@
 
 
 buildscript {
-    val kotlin_version by extra("1.4.21")
     repositories {
         google()
         jcenter()
@@ -10,8 +9,7 @@ buildscript {
     dependencies {
         classpath (Config.Plugin.ANDROID_TOOLS)
         classpath (Config.Plugin.KOTLIN_GRADLE_PLUGIN)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
-
+        classpath(Config.Plugin.HILT_ANDROID_GRADLE_PLUGIN)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

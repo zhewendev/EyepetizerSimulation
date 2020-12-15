@@ -5,6 +5,7 @@ object Config {
         //Plugin与AndroidX相关依赖库版本
         const val ANDROID_TOOLS_VERSION = "4.1.1"
         const val CORE_KTX_VERSION = "1.3.2"
+        const val HILT_ANDROID_VERSION = "2.28-alpha"
         const val APP_COMPAT_VERSION = "1.2.0"
         const val MATERIAL_VERSION = "1.2.1"
         const val CONSTRAINT_LAYOUT_VERSION = "2.0.4"
@@ -23,6 +24,7 @@ object Config {
     object Plugin{
         const val ANDROID_TOOLS = "com.android.tools.build:gradle:${Version.ANDROID_TOOLS_VERSION}"
         const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${ProjectProperties.KOTLIN_VERSION}"
+        const val HILT_ANDROID_GRADLE_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:${Version.HILT_ANDROID_VERSION}"
     }
 
     //AndroidX相关依赖库
@@ -44,6 +46,11 @@ object Config {
         const val LIFECYCLE_COMMON_JAVA8 = "androidx.lifecycle:lifecycle-common-java8:${Version.LIFECYCLE_VERSION}"
         const val LIFECYCLE_LIVE_DATA_KTX = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.LIFECYCLE_VERSION}"
         const val LIFECYCLE_VIEW_MODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.LIFECYCLE_VERSION}"
+
+        //hilt
+        const val HILT_ANDROID = "com.google.dagger:hilt-android:${Version.HILT_ANDROID_VERSION}"
+        const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.HILT_ANDROID_VERSION}"
+
     }
 
     //外部开源依赖库
