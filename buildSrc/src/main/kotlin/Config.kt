@@ -41,6 +41,8 @@ object Config {
 
     //JetPack相关依赖库
     object JetPack{
+
+
         const val LIFECYCLE_RUNTIME_KTX = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.LIFECYCLE_VERSION}"
         const val LIFECYCLE_COMPILER = "androidx.lifecycle:lifecycle-compiler:${Version.LIFECYCLE_VERSION}"
         const val LIFECYCLE_COMMON_JAVA8 = "androidx.lifecycle:lifecycle-common-java8:${Version.LIFECYCLE_VERSION}"
