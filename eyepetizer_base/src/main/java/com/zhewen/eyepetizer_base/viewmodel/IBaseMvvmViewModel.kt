@@ -1,16 +1,15 @@
 package com.zhewen.eyepetizer_base.viewmodel
 
-import android.view.View
 
 /**
  * 定义viewModel与UI视图的关联
  */
-interface IBaseMvvmViewModel {
+interface IBaseMvvmViewModel<V> {
 
     /**
      * 关联view
      */
-    fun attachView(V:View)
+    fun attachView(view:V)
 
     /**
      * 获取view

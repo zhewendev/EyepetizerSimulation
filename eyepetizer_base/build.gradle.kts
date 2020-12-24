@@ -1,4 +1,4 @@
-plugins{
+plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
@@ -21,7 +21,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -33,7 +36,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 
@@ -45,13 +48,14 @@ android {
 
 dependencies {
 
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation (Config.AndroidX.KOTLIN_STDLIB)
-    implementation (Config.AndroidX.CORE_KTX)
-    implementation (Config.AndroidX.APP_COMPAT)
-    implementation (Config.AndroidX.MATERIAL)
-    implementation (Config.AndroidX.CONSTRAINT_LAYOUT)
-    testImplementation (Config.AndroidX.JUNIT)
-    androidTestImplementation (Config.AndroidX.EXT_JUNIT)
-    androidTestImplementation (Config.AndroidX.ESPRESSO_CORE)
+    api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    api(Config.AndroidX.KOTLIN_STDLIB)
+    api(Config.AndroidX.CORE_KTX)
+    api(Config.AndroidX.APP_COMPAT)
+    api(Config.AndroidX.MATERIAL)
+    api(Config.AndroidX.CONSTRAINT_LAYOUT)
+    testImplementation(Config.AndroidX.JUNIT)
+    androidTestImplementation(Config.AndroidX.EXT_JUNIT)
+    androidTestImplementation(Config.AndroidX.ESPRESSO_CORE)
+    api(Config.External.LOAD_SIR)
 }

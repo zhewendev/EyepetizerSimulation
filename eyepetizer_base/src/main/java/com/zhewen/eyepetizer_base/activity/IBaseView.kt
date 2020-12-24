@@ -23,7 +23,7 @@ interface IBaseView {
     /**
      * 显示错误
      */
-    fun showError()
+    fun showError(message:String)
 
     /**
      * 显示无网络

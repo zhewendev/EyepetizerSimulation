@@ -50,6 +50,9 @@ object Config {
 
     //外部开源依赖库
     object External{
+        private const val LOAD_SIR_VERSION = "1.3.8"
+
+        const val LOAD_SIR = "com.kingja.loadsir:loadsir:${LOAD_SIR_VERSION}"
 
     }
 
