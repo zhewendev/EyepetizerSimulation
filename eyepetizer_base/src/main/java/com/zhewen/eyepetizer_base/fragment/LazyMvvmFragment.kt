@@ -1,14 +1,16 @@
-package com.zhewen.eyepetizer_base.activity
+package com.zhewen.eyepetizer_base.fragment
 
-import android.app.Activity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
+import com.zhewen.eyepetizer_base.activity.IBaseView
 import com.zhewen.eyepetizer_base.loadsir.EmptyCallback
 import com.zhewen.eyepetizer_base.loadsir.ErrorCallback
 import com.zhewen.eyepetizer_base.loadsir.LoadingCallback
@@ -16,41 +18,60 @@ import com.zhewen.eyepetizer_base.loadsir.NoNetworkCallback
 import com.zhewen.eyepetizer_base.viewmodel.IBaseMvvmViewModel
 
 /**
- * MVVM架构的Activity基类
+ * 懒加载的Fragment基类
  */
-abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseMvvmViewModel<Activity>> :
-    AppCompatActivity(), IBaseView {
+//TODO androidX下懒加载实现
+abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseMvvmViewModel<Fragment>>: Fragment(),IBaseView {
 
-    lateinit var mViewModel: VM
-    lateinit var mViewDataBinding: V
+    protected var mFragmentTag:String = this.javaClass.simpleName
+    lateinit var mViewDataBinding:V
+    lateinit var mViewModel:VM
     lateinit var mLoadService: LoadService<Any>
 
+    protected lateinit var mRootView:View
+
+    protected var mIsViewCreated:Boolean = false    //布局是否创建完成
+    protected var mCurrentVisibleState:Boolean = false  //当前可见状态
+    protected var mIsFirstVisible:Boolean = true    //是否时第一次可见
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initViewModel()
-        initDataBinding()
+        initParameters()
     }
 
     /**
-     * 初始化ViewModel，并关联视图
+     * 初始化参数
      */
-    private fun initViewModel() {
+    protected fun initParameters(){
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        if (!this::mRootView.isInitialized){
+            mViewDataBinding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false)
+            mRootView = mViewDataBinding.root
+        }
+        mIsViewCreated = true
+        return mRootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         mViewModel = getViewModel()
         mViewModel.attachView(this)
-    }
-
-    /**
-     * 初始化处理Databinding视图绑定问题
-     */
-    private fun initDataBinding() {
-        mViewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
         if (getBindingVariable() > 0) {
-            mViewDataBinding.setVariable(getBindingVariable(), mViewModel)
+            mViewDataBinding.setVariable(getBindingVariable(),mViewModel)
+            mViewDataBinding.executePendingBindings()
         }
-        mViewDataBinding.executePendingBindings()   //刷新UI视图
 
     }
+
+
+
 
     /**
      * 注册LoadSir回调框
@@ -97,16 +118,6 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseMvvmViewModel<Act
     }
 
     /**
-     * 解除视图与ViewModel的关联
-     */
-    override fun onDestroy() {
-        super.onDestroy()
-        if (mViewModel.isViewAttach()) {
-            mViewModel.detachView()
-        }
-    }
-
-    /**
      * 获取ViewModel
      */
     protected abstract fun getViewModel(): VM
@@ -115,6 +126,7 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseMvvmViewModel<Act
      * 获取Binding的参数Variable
      */
     protected abstract fun getBindingVariable(): Int
+
 
     /**
      * 获取布局资源ID
