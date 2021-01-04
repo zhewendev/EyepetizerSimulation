@@ -36,15 +36,8 @@ android {
 
 dependencies {
     api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    api (Config.AndroidX.KOTLIN_STDLIB)
-    api (Config.AndroidX.CORE_KTX)
-    api (Config.AndroidX.APP_COMPAT)
-    api (Config.AndroidX.MATERIAL)
-    api (Config.AndroidX.CONSTRAINT_LAYOUT)
-
-    //JetPack
-    api (Config.JetPack.LIFECYCLE_RUNTIME_KTX)
-    api (Config.JetPack.HILT_ANDROID)
+    api (project(":eyepetizer_base"))
+    implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
     testImplementation (Config.AndroidX.JUNIT)
     androidTestImplementation (Config.AndroidX.EXT_JUNIT)

@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -54,6 +55,11 @@ dependencies {
     api(Config.AndroidX.APP_COMPAT)
     api(Config.AndroidX.MATERIAL)
     api(Config.AndroidX.CONSTRAINT_LAYOUT)
+    //JetPack
+    api (Config.JetPack.LIFECYCLE_RUNTIME_KTX)
+    implementation (Config.JetPack.HILT_ANDROID)
+    kapt (Config.JetPack.HILT_ANDROID_COMPILER)
+
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)
     androidTestImplementation(Config.AndroidX.ESPRESSO_CORE)

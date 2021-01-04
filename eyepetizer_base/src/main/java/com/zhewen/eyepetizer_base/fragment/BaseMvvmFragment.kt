@@ -14,12 +14,12 @@ import com.zhewen.eyepetizer_base.loadsir.EmptyCallback
 import com.zhewen.eyepetizer_base.loadsir.ErrorCallback
 import com.zhewen.eyepetizer_base.loadsir.LoadingCallback
 import com.zhewen.eyepetizer_base.loadsir.NoNetworkCallback
-import com.zhewen.eyepetizer_base.viewmodel.IBaseMvvmViewModel
+import com.zhewen.eyepetizer_base.viewmodel.IBaseViewModel
 
 /**
  * BaseFragment基类
  */
-abstract class BaseMvvmFragment <V : ViewDataBinding,VM : IBaseMvvmViewModel<Fragment>> : Fragment(),IBaseView {
+abstract class BaseMvvmFragment <V : ViewDataBinding,VM : IBaseViewModel> : Fragment(),IBaseView {
     lateinit var mViewModel: VM
     lateinit var mViewDataBinding:V
     lateinit var mLoadService: LoadService<Any>
@@ -49,7 +49,6 @@ abstract class BaseMvvmFragment <V : ViewDataBinding,VM : IBaseMvvmViewModel<Fra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = getViewModel()
-        mViewModel.attachView(this)
         if (getBindingVariable() > 0) {
             mViewDataBinding.setVariable(getBindingVariable(),mViewModel)
             mViewDataBinding.executePendingBindings()
@@ -58,16 +57,10 @@ abstract class BaseMvvmFragment <V : ViewDataBinding,VM : IBaseMvvmViewModel<Fra
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mViewModel.isViewAttach()) {
-            mViewModel.detachView()
-        }
     }
 
     override fun onDetach() {
         super.onDetach()
-        if (mViewModel.isViewAttach()) {
-            mViewModel.detachView()
-        }
     }
 
     /**

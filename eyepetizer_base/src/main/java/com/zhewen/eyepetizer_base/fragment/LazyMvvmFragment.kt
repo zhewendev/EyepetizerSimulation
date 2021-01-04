@@ -15,13 +15,12 @@ import com.zhewen.eyepetizer_base.loadsir.EmptyCallback
 import com.zhewen.eyepetizer_base.loadsir.ErrorCallback
 import com.zhewen.eyepetizer_base.loadsir.LoadingCallback
 import com.zhewen.eyepetizer_base.loadsir.NoNetworkCallback
-import com.zhewen.eyepetizer_base.viewmodel.IBaseMvvmViewModel
+import com.zhewen.eyepetizer_base.viewmodel.IBaseViewModel
 
 /**
  * 懒加载的Fragment基类
  */
-//TODO androidX下懒加载实现
-abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseMvvmViewModel<Fragment>>: Fragment(),IBaseView {
+abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseViewModel>: Fragment(),IBaseView {
 
     protected var mFragmentTag:String = this.javaClass.simpleName
     lateinit var mViewDataBinding:V
@@ -30,9 +29,7 @@ abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseMvvmViewModel<Frag
 
     protected lateinit var mRootView:View
 
-    protected var mIsViewCreated:Boolean = false    //布局是否创建完成
-    protected var mCurrentVisibleState:Boolean = false  //当前可见状态
-    protected var mIsFirstVisible:Boolean = true    //是否时第一次可见
+    protected var mIsLoaded : Boolean= false //数据是否初始化过
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,23 +52,26 @@ abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseMvvmViewModel<Frag
             mViewDataBinding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false)
             mRootView = mViewDataBinding.root
         }
-        mIsViewCreated = true
         return mRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = getViewModel()
-        mViewModel.attachView(this)
         if (getBindingVariable() > 0) {
             mViewDataBinding.setVariable(getBindingVariable(),mViewModel)
             mViewDataBinding.executePendingBindings()
         }
-
     }
 
-
-
+    override fun onResume() {
+        super.onResume()
+        //增加Fragment是否可见的判断
+        if (!mIsLoaded && !isHidden) {
+            lazyInit()
+            mIsLoaded = true
+        }
+    }
 
     /**
      * 注册LoadSir回调框
@@ -117,6 +117,11 @@ abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseMvvmViewModel<Frag
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mIsLoaded = false
+    }
+
     /**
      * 获取ViewModel
      */
@@ -138,5 +143,10 @@ abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseMvvmViewModel<Frag
      * 失败重试,重新加载事件
      */
     protected abstract fun onRetryBtnClick()
+
+    /**
+     * 数据延迟初始化
+     */
+    protected abstract fun lazyInit()
 
 }

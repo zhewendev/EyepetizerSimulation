@@ -13,12 +13,12 @@ import com.zhewen.eyepetizer_base.loadsir.EmptyCallback
 import com.zhewen.eyepetizer_base.loadsir.ErrorCallback
 import com.zhewen.eyepetizer_base.loadsir.LoadingCallback
 import com.zhewen.eyepetizer_base.loadsir.NoNetworkCallback
-import com.zhewen.eyepetizer_base.viewmodel.IBaseMvvmViewModel
+import com.zhewen.eyepetizer_base.viewmodel.IBaseViewModel
 
 /**
  * MVVM架构的Activity基类
  */
-abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseMvvmViewModel<Activity>> :
+abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseViewModel> :
     AppCompatActivity(), IBaseView {
 
     lateinit var mViewModel: VM
@@ -28,6 +28,7 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseMvvmViewModel<Act
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         initViewModel()
         initDataBinding()
     }
@@ -37,7 +38,6 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseMvvmViewModel<Act
      */
     private fun initViewModel() {
         mViewModel = getViewModel()
-        mViewModel.attachView(this)
     }
 
     /**
@@ -101,9 +101,6 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseMvvmViewModel<Act
      */
     override fun onDestroy() {
         super.onDestroy()
-        if (mViewModel.isViewAttach()) {
-            mViewModel.detachView()
-        }
     }
 
     /**

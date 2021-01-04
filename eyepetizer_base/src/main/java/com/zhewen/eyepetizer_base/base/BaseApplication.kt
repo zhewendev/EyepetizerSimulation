@@ -10,7 +10,7 @@ import kotlin.properties.Delegates
 /**
  * Application基类
  */
-class BaseApplication : Application() {
+open class BaseApplication : Application() {
 
     companion object {
         private var sInstance: BaseApplication by Delegates.notNull()
@@ -29,6 +29,21 @@ class BaseApplication : Application() {
                 }
             }
             return null
+        }
+
+        /**
+         * 获取applicaton
+         */
+        fun getInstance():BaseApplication{
+            return sInstance
+        }
+
+        fun setsDebug(debug: Boolean){
+            sDebug = debug
+        }
+
+        fun getIsDebug():Boolean {
+            return sDebug
         }
     }
 
@@ -66,21 +81,6 @@ class BaseApplication : Application() {
                 ActivityStackManager.sActivityStackManagerInstance.removeActivity(activity)
             }
         })
-    }
-
-    /**
-     * 获取applicaton
-     */
-    fun getInstance():BaseApplication{
-        return sInstance
-    }
-
-    fun setsDebug(debug: Boolean){
-        sDebug = debug
-    }
-
-    fun getIsDebug():Boolean {
-        return sDebug
     }
 
 }
