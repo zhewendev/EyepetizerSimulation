@@ -28,7 +28,6 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseViewModel> :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         initViewModel()
         initDataBinding()
     }

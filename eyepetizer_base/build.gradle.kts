@@ -14,7 +14,7 @@ android {
         targetSdkVersion(ProjectProperties.TARGET_SDK_VERSION)
         versionCode = ProjectProperties.VERSION_CODE
         versionName = ProjectProperties.VERSION_NAME
-
+        multiDexEnabled = true
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -55,10 +55,14 @@ dependencies {
     api(Config.AndroidX.APP_COMPAT)
     api(Config.AndroidX.MATERIAL)
     api(Config.AndroidX.CONSTRAINT_LAYOUT)
+    api(Config.AndroidX.MULTIDEX)
     //JetPack
     api (Config.JetPack.LIFECYCLE_RUNTIME_KTX)
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
+
+    //External
+    api(Config.External.LOGGER)
 
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)

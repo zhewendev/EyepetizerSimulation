@@ -14,6 +14,7 @@ android {
         targetSdkVersion(ProjectProperties.TARGET_SDK_VERSION)
         versionCode = ProjectProperties.VERSION_CODE
         versionName = ProjectProperties.VERSION_NAME
+        multiDexEnabled = true
 
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
         consumerProguardFiles("consumer-rules.pro")

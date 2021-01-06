@@ -64,22 +64,33 @@ class StatusBarUtil {
         /**
          * 返回状态栏是否可见
          */
-        // TODO: 2021/1/4  
+        // TODO: 2021/1/5  
         fun isStatusBarVisible(activity: Activity): Boolean {
             val flags = activity.window.attributes.flags
-            return when (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                true -> (flags and WindowManager.LayoutParams.FLAG_FULLSCREEN) == 0
-                false -> {
-                    activity.window.decorView.setOnApplyWindowInsetsListener(object : View.OnApplyWindowInsetsListener{
-                        override fun onApplyWindowInsets(
-                            v: View?,
-                            insets: WindowInsets?
-                        ): WindowInsets? {
-                            return insets
-                        }
-                    })
-                }
+            return (flags and WindowManager.LayoutParams.FLAG_FULLSCREEN) == 0
+        }
 
+        /**
+         * 设置状态栏的light模式
+         */
+        fun setStatusBarLightMode(
+            @NonNull activity: Activity,
+            isLightMode: Boolean
+        ) {
+            setStatusBarLightMode(activity.window, isLightMode)
+        }
+
+        // TODO: 2021/1/5  
+        fun setStatusBarLightMode(window: Window, isLightMode: Boolean) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                val decorView = window.decorView
+                var vis = decorView.systemUiVisibility
+                vis = if (isLightMode) {
+                    vis or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                } else {
+                    vis and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+                }
+                decorView.systemUiVisibility = vis
             }
         }
 

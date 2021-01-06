@@ -21,6 +21,7 @@ object Config {
         private const val JUNIT_VERSION = "4.13.1"
         private const val EXT_JUNIT_VERSION = "1.1.2"
         private const val ESPRESSO_CORE_VERSION = "3.3.0"
+        private const val MULTIDEX_VERSION = "2.0.1"
 
         const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:${ProjectProperties.KOTLIN_VERSION}"
         const val CORE_KTX = "androidx.core:core-ktx:${CORE_KTX_VERSION}"
@@ -30,6 +31,7 @@ object Config {
         const val JUNIT = "junit:junit:${JUNIT_VERSION}"
         const val EXT_JUNIT = "androidx.test.ext:junit:${EXT_JUNIT_VERSION}"
         const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${ESPRESSO_CORE_VERSION}"
+        const val MULTIDEX = "androidx.multidex:multidex:${MULTIDEX_VERSION}"
     }
 
     //JetPack相关依赖库
@@ -51,8 +53,12 @@ object Config {
     //外部开源依赖库
     object External{
         private const val LOAD_SIR_VERSION = "1.3.8"
+        private const val LOGGER_VERSION = "2.2.0"
+
 
         const val LOAD_SIR = "com.kingja.loadsir:loadsir:${LOAD_SIR_VERSION}"
+        const val LOGGER = "com.orhanobut:logger:${LOGGER_VERSION}"
+
 
     }
 

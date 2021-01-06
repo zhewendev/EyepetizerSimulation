@@ -2,17 +2,23 @@ package com.zhewen.eyepetizer_base.base
 
 import android.app.Activity
 import android.app.ActivityManager
-import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
+import com.orhanobut.logger.PrettyFormatStrategy
+import com.zhewen.eyepetizer_base.BuildConfig
 import kotlin.properties.Delegates
 
 /**
  * Application基类
  */
-open class BaseApplication : Application() {
+open class BaseApplication : MultiDexApplication() {
 
     companion object {
+        private const val TAG = "EyepetizerApplication"
         private var sInstance: BaseApplication by Delegates.notNull()
         private var sDebug: Boolean by Delegates.notNull()
 
@@ -50,6 +56,12 @@ open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         registerActivityLifeCycle(this)
+        initLogConfig()
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 
     /**
@@ -79,6 +91,20 @@ open class BaseApplication : Application() {
 
             override fun onActivityDestroyed(activity: Activity) {
                 ActivityStackManager.sActivityStackManagerInstance.removeActivity(activity)
+            }
+        })
+    }
+
+    private fun initLogConfig() {
+        val formatStrategy = PrettyFormatStrategy.newBuilder()
+            .showThreadInfo(false)  // 隐藏线程信息 默认：显示
+            .methodCount(0)         // 决定打印多少行（每一行代表一个方法）默认：2
+            .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
+            .tag(TAG)   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+            .build()
+        Logger.addLogAdapter(object : AndroidLogAdapter(formatStrategy) {
+            override fun isLoggable(priority: Int, tag: String?): Boolean {
+                return BuildConfig.DEBUG
             }
         })
     }

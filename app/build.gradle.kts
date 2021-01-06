@@ -1,6 +1,8 @@
 plugins {
-   id( "com.android.application")
+    id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -13,6 +15,7 @@ android {
         targetSdkVersion(ProjectProperties.TARGET_SDK_VERSION)
         versionCode = ProjectProperties.VERSION_CODE
         versionName = ProjectProperties.VERSION_NAME
+        multiDexEnabled = true
 
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
     }
@@ -20,7 +23,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -35,12 +41,13 @@ android {
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation (Config.AndroidX.KOTLIN_STDLIB)
-    implementation (Config.AndroidX.CORE_KTX)
-    implementation (Config.AndroidX.APP_COMPAT)
-    implementation (Config.AndroidX.MATERIAL)
-    implementation (Config.AndroidX.CONSTRAINT_LAYOUT)
-    testImplementation (Config.AndroidX.JUNIT)
-    androidTestImplementation (Config.AndroidX.EXT_JUNIT)
-    androidTestImplementation (Config.AndroidX.ESPRESSO_CORE)
+    implementation(project(":eyepetizer_common"))
+
+    implementation(Config.JetPack.HILT_ANDROID)
+    kapt(Config.JetPack.HILT_ANDROID_COMPILER)
+
+
+    testImplementation(Config.AndroidX.JUNIT)
+    androidTestImplementation(Config.AndroidX.EXT_JUNIT)
+    androidTestImplementation(Config.AndroidX.ESPRESSO_CORE)
 }
