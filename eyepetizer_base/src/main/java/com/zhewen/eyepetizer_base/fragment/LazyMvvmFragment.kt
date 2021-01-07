@@ -4,23 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
+import com.orhanobut.logger.Logger
 import com.zhewen.eyepetizer_base.activity.IBaseView
 import com.zhewen.eyepetizer_base.loadsir.EmptyCallback
 import com.zhewen.eyepetizer_base.loadsir.ErrorCallback
 import com.zhewen.eyepetizer_base.loadsir.LoadingCallback
 import com.zhewen.eyepetizer_base.loadsir.NoNetworkCallback
 import com.zhewen.eyepetizer_base.viewmodel.IBaseViewModel
+import pub.devrel.easypermissions.AppSettingsDialog
+import pub.devrel.easypermissions.EasyPermissions
 
 /**
  * 懒加载的Fragment基类
  */
-abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseViewModel>: Fragment(),IBaseView {
+abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseViewModel>: Fragment(),IBaseView,EasyPermissions.PermissionCallbacks {
 
     protected var mFragmentTag:String = this.javaClass.simpleName
     lateinit var mViewDataBinding:V
@@ -123,6 +127,50 @@ abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseViewModel>: Fragme
     }
 
     /**
+     * 权限结果回调，接收权限请求结果
+     */
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)    //将权限请求结果传递给EasyPermission库处理
+    }
+
+    /**
+     * 权限申请失败回调
+     */
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        // 处理权限名字字符串
+        val sb = StringBuffer()
+        for (str in perms) {
+            sb.append(str)
+            sb.append("\n")
+        }
+        sb.replace(sb.length - 2, sb.length, "")
+        //用户点击拒绝并不再询问时调用
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            Toast.makeText(activity, "已拒绝权限" + sb + "并不再询问", Toast.LENGTH_SHORT).show()
+            AppSettingsDialog.Builder(this)
+                .setRationale("此功能需要" + sb + "权限，否则无法正常使用，是否打开设置")
+                .setPositiveButton("是")
+                .setNegativeButton("否")
+                .build()
+                .show()
+        }
+    }
+
+    /**
+     * 权限申请成功回调
+     */
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+
+        Logger.t(TAG).d("onPermissionGranted, 获取成功的权限$perms")
+
+    }
+
+    /**
      * 获取ViewModel
      */
     protected abstract fun getViewModel(): VM
@@ -148,5 +196,9 @@ abstract class LazyMvvmFragment<V : ViewDataBinding,VM : IBaseViewModel>: Fragme
      * 数据延迟初始化
      */
     protected abstract fun lazyInit()
+
+    companion object{
+        const val TAG = "LazyMvvmFragment"
+    }
 
 }

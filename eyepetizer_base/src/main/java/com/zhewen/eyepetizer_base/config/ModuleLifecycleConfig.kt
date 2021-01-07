@@ -24,6 +24,27 @@ class ModuleLifecycleConfig private constructor(){
         for (moduleName in ModuleLifecycleReflex.mInitModuleNames) {
             try {
                 val clazz = Class.forName(moduleName)
+                val init = clazz.newInstance() as IModuleInit
+                init.onInitAhead(application)   //调用初始化方法
+            } catch (e: ClassNotFoundException) {
+                e.printStackTrace()
+            } catch (e: InstantiationException) {
+                e.printStackTrace()
+            } catch (e: IllegalAccessException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    /**
+     * 可以后初始化
+     */
+    fun initModuleEnd(application: BaseApplication) {
+        for (moduleName in ModuleLifecycleReflex.mInitModuleNames) {
+            try {
+                val clazz = Class.forName(moduleName)
+                val init = clazz.newInstance() as IModuleInit
+                init.onInitEnd(application) //调用初始化方法
             } catch (e: ClassNotFoundException) {
                 e.printStackTrace()
             } catch (e: InstantiationException) {

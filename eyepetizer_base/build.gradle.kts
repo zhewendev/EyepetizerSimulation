@@ -58,11 +58,21 @@ dependencies {
     api(Config.AndroidX.MULTIDEX)
     //JetPack
     api (Config.JetPack.LIFECYCLE_RUNTIME_KTX)
+    annotationProcessor (Config.JetPack.LIFECYCLE_COMPILER)
+    api(Config.JetPack.LIFECYCLE_COMMON_JAVA8)
+    api(Config.JetPack.LIFECYCLE_LIVE_DATA_KTX)
+    api(Config.JetPack.LIFECYCLE_VIEW_MODEL_KTX)
+    api(Config.JetPack.NAVIGATION_FRAGMENT_KTX)
+    api(Config.JetPack.NAVIGATION_UI_KTX)
+    api(Config.JetPack.NAVIGATION_DYNAMIC_FEATURES)
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
 
     //External
     api(Config.External.LOGGER)
+    api(Config.External.EASY_PERMISSION)
+    api (Config.External.MMKV)
+    api (Config.External.GSON)
 
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)
