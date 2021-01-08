@@ -9,17 +9,19 @@ import com.zhewen.eyepetizersimulation.utils.Constants
 
 class LandingActivity:AppCompatActivity() {
 
-    private var mIsFirstEnter by MMKVPreference<Boolean>(Constants.KEY_IS_FIRST_OPEN_APP,true)
+    private var mIsFirstEnter by MMKVPreference(Constants.KEY_IS_FIRST_OPEN_APP,true)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
+        //首次进入，展示新手引导页
+        if(mIsFirstEnter) {
+            mIsFirstEnter = false
+        } else {
+
+        }
 
 
-    }
-
-    private fun isFirstOpenApp() : Boolean {
-        return
     }
 
 

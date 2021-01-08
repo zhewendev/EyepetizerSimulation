@@ -72,6 +72,9 @@ object Config {
         private const val EASY_PERMISSION_VERSION = "3.0.0"
         private const val MMKV_VERSION = "1.2.7"
         private const val GSON_VERSION = "2.8.6"
+        private const val BANNER_VERSION = "2.1.0"
+        //下拉刷新开源库
+        private const val SMART_REFRESH_LAYOUT_VERSION = "2.0.3"
 
 
         const val LOAD_SIR = "com.kingja.loadsir:loadsir:${LOAD_SIR_VERSION}"
@@ -79,6 +82,7 @@ object Config {
         const val EASY_PERMISSION = "pub.devrel:easypermissions:${EASY_PERMISSION_VERSION}"
         const val MMKV = "com.tencent:mmkv-static:${MMKV_VERSION}"
         const val GSON = "com.google.code.gson:gson:${GSON_VERSION}"
+        const val BANNER = "com.youth.banner:banner:${BANNER_VERSION}"
 
 
     }

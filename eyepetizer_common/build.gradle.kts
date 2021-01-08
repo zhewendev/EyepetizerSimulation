@@ -44,6 +44,8 @@ dependencies {
     api (project(":eyepetizer_base"))
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
+    api (Config.External.BANNER)
+
     testImplementation (Config.AndroidX.JUNIT)
     androidTestImplementation (Config.AndroidX.EXT_JUNIT)
     androidTestImplementation (Config.AndroidX.ESPRESSO_CORE)
