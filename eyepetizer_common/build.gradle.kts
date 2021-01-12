@@ -41,10 +41,17 @@ android {
 
 dependencies {
     api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    //androidX
+    api (Config.AndroidX.CARDVIEW)
     api (project(":eyepetizer_base"))
+    //jetpack
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
+    //external
     api (Config.External.BANNER)
+    api (Config.External.SMART_REFRESH_LAYOUT_KERNEL)
+    api(Config.External.SMART_REFRESH_HEADER_CLASSICS)
+    annotationProcessor(Config.External.AROUTER_COMPILER)
 
     testImplementation (Config.AndroidX.JUNIT)
     androidTestImplementation (Config.AndroidX.EXT_JUNIT)

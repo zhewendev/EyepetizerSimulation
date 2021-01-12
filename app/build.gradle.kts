@@ -18,6 +18,12 @@ android {
         versionName = ProjectProperties.VERSION_NAME
         multiDexEnabled = true
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                argument("AROUTER_MODULE_NAME",project.name)
+            }
+        }
+
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
     }
 
@@ -39,6 +45,7 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -53,6 +60,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     kapt(Config.JetPack.HILT_ANDROID_COMPILER)
 
+    annotationProcessor(Config.External.AROUTER_COMPILER)
 
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)

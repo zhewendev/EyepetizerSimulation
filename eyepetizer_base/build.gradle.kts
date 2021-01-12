@@ -73,6 +73,8 @@ dependencies {
     api(Config.External.EASY_PERMISSION)
     api (Config.External.MMKV)
     api (Config.External.GSON)
+    api (Config.External.AROUTER_API)
+    annotationProcessor(Config.External.AROUTER_COMPILER)
 
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    字体栏-->
+    <string name="font_din_condensed_bold">DIN-Condensed-Bold</string>
+    <string name="font_futura_condensed_medium">Futura-CondensedMedium</string>
+    <string name="font_fzlantingheis_db1_gb_regular">FZLanTingHeiS-DB1-GB-Regular</string>
+    <string name="font_fzlantingheis_l_gb_regular">FZLanTingHeiS-L-GB-Regular</string>
+    <string name="font_lantingheijian">LanTingHeiJian</string>
+    <string name="font_lobster_1.4">Lobster-1.4</string>
+
+    <string name="start_enter_home_page">start now</string>
+</resources>

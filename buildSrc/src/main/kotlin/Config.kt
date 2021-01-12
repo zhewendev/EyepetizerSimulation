@@ -24,6 +24,7 @@ object Config {
         private const val EXT_JUNIT_VERSION = "1.1.2"
         private const val ESPRESSO_CORE_VERSION = "3.3.0"
         private const val MULTIDEX_VERSION = "2.0.1"
+        private const val CARDVIEW_VERSION = "1.0.0"
 
         const val KOTLIN_STDLIB =
             "org.jetbrains.kotlin:kotlin-stdlib:${ProjectProperties.KOTLIN_VERSION}"
@@ -36,6 +37,7 @@ object Config {
         const val EXT_JUNIT = "androidx.test.ext:junit:${EXT_JUNIT_VERSION}"
         const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${ESPRESSO_CORE_VERSION}"
         const val MULTIDEX = "androidx.multidex:multidex:${MULTIDEX_VERSION}"
+        const val CARDVIEW = "androidx.cardview:cardview:${CARDVIEW_VERSION}"
     }
 
     //JetPack相关依赖库
@@ -76,6 +78,8 @@ object Config {
         //下拉刷新开源库
         private const val SMART_REFRESH_LAYOUT_VERSION = "2.0.3"
 
+        private const val AROUTER_VERSION = "1.5.1"
+
 
         const val LOAD_SIR = "com.kingja.loadsir:loadsir:${LOAD_SIR_VERSION}"
         const val LOGGER = "com.orhanobut:logger:${LOGGER_VERSION}"
@@ -83,6 +87,18 @@ object Config {
         const val MMKV = "com.tencent:mmkv-static:${MMKV_VERSION}"
         const val GSON = "com.google.code.gson:gson:${GSON_VERSION}"
         const val BANNER = "com.youth.banner:banner:${BANNER_VERSION}"
+
+        const val SMART_REFRESH_LAYOUT_KERNEL = "com.scwang.smart:refresh-layout-kernel:${SMART_REFRESH_LAYOUT_VERSION}"    //下拉刷新核心库
+        const val SMART_REFRESH_HEADER_CLASSICS = "com.scwang.smart:refresh-header-classics:${SMART_REFRESH_LAYOUT_VERSION}"    //经典刷新头
+        const val SMART_REFRESH_HEADER_RADAR = "com.scwang.smart:refresh-header-radar:${SMART_REFRESH_LAYOUT_VERSION}"  //雷达刷新头
+        const val SMART_REFRESH_HEADER_FALSIFY = "com.scwang.smart:refresh-header-falsify:${SMART_REFRESH_LAYOUT_VERSION}"//虚拟刷新头
+        const val SMART_REFRESH_HEADER_MATERIAL = "com.scwang.smart:refresh-header-material:${SMART_REFRESH_LAYOUT_VERSION}"//谷歌刷新头
+        const val SMART_REFRESH_HEADER_TWO_LEVEL = "com.scwang.smart:refresh-header-two-level:${SMART_REFRESH_LAYOUT_VERSION}" //二级刷新头
+        const val SMART_REFRESH_FOOTER_BALL = "com.scwang.smart:refresh-footer-ball:${SMART_REFRESH_LAYOUT_VERSION}"    //球脉冲加载
+        const val SMART_REFRESH_FOOTER_CLASSICS = "com.scwang.smart:refresh-footer-classics:${SMART_REFRESH_LAYOUT_VERSION}"
+
+        const val AROUTER_API ="com.alibaba:arouter-api:${AROUTER_VERSION}"
+        const val AROUTER_COMPILER = "com.alibaba:arouter-compiler:${AROUTER_VERSION}"
 
 
     }

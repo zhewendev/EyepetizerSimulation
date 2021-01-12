@@ -27,4 +27,5 @@ class CustomFontText(context: Context, attributeSet: AttributeSet?, defStyleAttr
         val fontTypeface = fontTypefaceName?.let { FontCache.getCustomTypeFace(it) }
         typeface = fontTypeface
     }
+
 }
