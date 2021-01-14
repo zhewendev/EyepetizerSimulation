@@ -14,7 +14,9 @@ import com.orhanobut.logger.Logger
 import com.zhewen.eyepetizer_base.activity.BaseMvvmActivity
 import com.zhewen.eyepetizer_base.base.ActivityStackManager
 import com.zhewen.eyepetizer_base.util.MMKVPreference
+import com.zhewen.eyepetizer_common.route.ModuleRoute
 import com.zhewen.eyepetizer_common.util.device.StatusBarUtil
+import com.zhewen.eyepetizer_common.util.other.JumpUtil
 import com.zhewen.eyepetizersimulation.R
 import com.zhewen.eyepetizersimulation.databinding.ActivityLandingBinding
 import com.zhewen.eyepetizersimulation.utils.Constants
@@ -52,12 +54,14 @@ class LandingActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks
     private fun initAnimation() {
         alphaAnimation = AlphaAnimation(0.3f, 1.0f)
         alphaAnimation.duration = 1000
+        Logger.t(TAG).d("initAnimation")
         alphaAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
-
+                Logger.t(TAG).d("onAnimationStart")
             }
 
             override fun onAnimationEnd(animation: Animation?) {
+                Logger.t(TAG).d("onAnimationEnd")
                 checkPermission()   //检查权限
             }
 
@@ -65,12 +69,13 @@ class LandingActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks
             }
 
         })
+        alphaAnimation.start()
     }
 
     /**
      * 页面跳转，根据是否是首次打开app，跳转不同的页面
      */
-    private fun pageJump(){
+    private fun pageJump() {
         //首次进入，展示新手引导页
         if (mIsFirstEnter) {
             mViewBinding.fragmentContainerView.visibility = View.VISIBLE
@@ -81,6 +86,7 @@ class LandingActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks
             Logger.d(TAG, "首次进入")
         } else {
             //进入到主页面
+            JumpUtil.jumpToNative(ModuleRoute.Home.ACTIVITY_HOME, false, mutableMapOf())
             Logger.d(TAG, "进入主页面")
         }
     }
@@ -161,6 +167,7 @@ class LandingActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks
 
     override fun onDestroy() {
         super.onDestroy()
+        alphaAnimation.cancel()
         ActivityStackManager.sActivityStackManagerInstance.removeActivity(this)
     }
 }

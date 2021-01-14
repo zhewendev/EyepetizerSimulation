@@ -1,15 +1,21 @@
 package com.zhewen.eyepetizersimulation.adapter
 
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.youth.banner.adapter.BannerAdapter
+import com.zhewen.eyepetizer_base.util.saveMmkvValue
+import com.zhewen.eyepetizer_common.route.ModuleRoute
 import com.zhewen.eyepetizer_common.util.font.CustomFontText
+import com.zhewen.eyepetizer_common.util.other.JumpUtil
 import com.zhewen.eyepetizersimulation.R
 import com.zhewen.eyepetizersimulation.bean.ImageTitleBean
+import com.zhewen.eyepetizersimulation.utils.Constants
+import dagger.Module
 
 /**
  * 图片+标题适配器
@@ -35,7 +41,8 @@ class ImageTitleAdapter(private val mMutableList: MutableList<ImageTitleBean>): 
         if (position == itemCount -1) {
             holder?.mBannerButton?.visibility = View.VISIBLE
             holder?.mBannerButton?.setOnClickListener {
-                //todo 跳转到主页面
+                // 跳转到主页面
+                JumpUtil.jumpToNative(ModuleRoute.Home.ACTIVITY_HOME,false, mutableMapOf())
             }
         } else {
             holder?.mBannerButton?.visibility = View.GONE
@@ -51,4 +58,5 @@ class ImageTitleAdapter(private val mMutableList: MutableList<ImageTitleBean>): 
         val mBannerText : CustomFontText by lazy { view.findViewById(R.id.welcome_banner_title) }
         val mBannerButton : Button by lazy { view.findViewById(R.id.welcome_enter_home_page) }
     }
+
 }

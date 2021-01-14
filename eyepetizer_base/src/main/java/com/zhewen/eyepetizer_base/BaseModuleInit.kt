@@ -1,5 +1,6 @@
 package com.zhewen.eyepetizer_base
 
+import com.alibaba.android.arouter.launcher.ARouter
 import com.kingja.loadsir.core.LoadSir
 import com.orhanobut.logger.Logger
 import com.tencent.mmkv.MMKV
@@ -17,6 +18,11 @@ class BaseModuleInit: IModuleInit {
 
     override fun onInitAhead(application: BaseApplication): Boolean {
         MMKV.initialize(application)
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
+        ARouter.init(application)
         LoadSir.beginBuilder()
             .addCallback(EmptyCallback())
             .addCallback(ErrorCallback())

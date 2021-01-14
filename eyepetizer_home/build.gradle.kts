@@ -33,7 +33,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
     buildFeatures {
         dataBinding = true
     }
@@ -41,19 +40,11 @@ android {
 
 dependencies {
     api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    //androidX
-    api (Config.AndroidX.CARDVIEW)
-    api (project(":eyepetizer_base"))
+    api(project(":eyepetizer_common"))
     //jetpack
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
-    //external
-    api (Config.External.BANNER)
-    api (Config.External.SMART_REFRESH_LAYOUT_KERNEL)
-    api(Config.External.SMART_REFRESH_HEADER_CLASSICS)
     annotationProcessor(Config.External.AROUTER_COMPILER)
-    api(Config.External.BADGEVIEW)
-
     testImplementation (Config.AndroidX.JUNIT)
     androidTestImplementation (Config.AndroidX.EXT_JUNIT)
     androidTestImplementation (Config.AndroidX.ESPRESSO_CORE)

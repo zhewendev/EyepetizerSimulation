@@ -77,8 +77,9 @@ object Config {
         private const val BANNER_VERSION = "2.1.0"
         //下拉刷新开源库
         private const val SMART_REFRESH_LAYOUT_VERSION = "2.0.3"
-
         private const val AROUTER_VERSION = "1.5.1"
+        private const val BADGEVIEW_VERSION = "1.1.3"
+
 
 
         const val LOAD_SIR = "com.kingja.loadsir:loadsir:${LOAD_SIR_VERSION}"
@@ -99,6 +100,7 @@ object Config {
 
         const val AROUTER_API ="com.alibaba:arouter-api:${AROUTER_VERSION}"
         const val AROUTER_COMPILER = "com.alibaba:arouter-compiler:${AROUTER_VERSION}"
+        const val BADGEVIEW = "q.rorbin:badgeview:${BADGEVIEW_VERSION}"
 
 
     }
