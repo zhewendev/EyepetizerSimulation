@@ -18,12 +18,11 @@ android {
         versionName = ProjectProperties.VERSION_NAME
         multiDexEnabled = true
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                argument("AROUTER_MODULE_NAME",project.name)
+        kapt {
+            arguments{
+                arg("AROUTER_MODULE_NAME",project.name)
             }
         }
-
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
     }
 
@@ -49,10 +48,12 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(":eyepetizer_common"))
+    implementation(project(":eyepetizer_home"))
 
     implementation(Config.JetPack.HILT_ANDROID)
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -60,7 +61,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     kapt(Config.JetPack.HILT_ANDROID_COMPILER)
 
-    annotationProcessor(Config.External.AROUTER_COMPILER)
+    kapt(Config.External.AROUTER_COMPILER)
 
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)

@@ -16,6 +16,11 @@ android {
         versionName = ProjectProperties.VERSION_NAME
         multiDexEnabled = true
 
+        kapt {
+            arguments{
+                arg("AROUTER_MODULE_NAME",project.name)
+            }
+        }
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -51,7 +56,7 @@ dependencies {
     api (Config.External.BANNER)
     api (Config.External.SMART_REFRESH_LAYOUT_KERNEL)
     api(Config.External.SMART_REFRESH_HEADER_CLASSICS)
-    annotationProcessor(Config.External.AROUTER_COMPILER)
+    kapt(Config.External.AROUTER_COMPILER)
     api(Config.External.BADGEVIEW)
 
     testImplementation (Config.AndroidX.JUNIT)

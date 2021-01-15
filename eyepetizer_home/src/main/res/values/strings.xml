@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="eyepetizer_bottom_home_title">首页</string>
+    <string name="eyepetizer_bottom_community_title">社区</string>
+    <string name="eyepetizer_bottom_explore_title">发现</string>
+    <string name="eyepetizer_bottom_user_center_title">我的</string>
+
+</resources>

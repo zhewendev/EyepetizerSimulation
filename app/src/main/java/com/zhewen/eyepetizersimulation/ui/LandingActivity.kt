@@ -11,7 +11,6 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.orhanobut.logger.Logger
-import com.zhewen.eyepetizer_base.activity.BaseMvvmActivity
 import com.zhewen.eyepetizer_base.base.ActivityStackManager
 import com.zhewen.eyepetizer_base.util.MMKVPreference
 import com.zhewen.eyepetizer_common.route.ModuleRoute
@@ -53,7 +52,7 @@ class LandingActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks
 
     private fun initAnimation() {
         alphaAnimation = AlphaAnimation(0.3f, 1.0f)
-        alphaAnimation.duration = 1000
+        alphaAnimation.duration = 2000
         Logger.t(TAG).d("initAnimation")
         alphaAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
@@ -69,7 +68,7 @@ class LandingActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks
             }
 
         })
-        alphaAnimation.start()
+        mViewBinding.root.startAnimation(alphaAnimation)
     }
 
     /**

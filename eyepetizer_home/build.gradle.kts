@@ -16,6 +16,11 @@ android {
         versionName = ProjectProperties.VERSION_NAME
         multiDexEnabled = true
 
+        kapt {
+            arguments{
+                arg("AROUTER_MODULE_NAME",project.name)
+            }
+        }
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -44,7 +49,7 @@ dependencies {
     //jetpack
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
-    annotationProcessor(Config.External.AROUTER_COMPILER)
+    kapt(Config.External.AROUTER_COMPILER)
     testImplementation (Config.AndroidX.JUNIT)
     androidTestImplementation (Config.AndroidX.EXT_JUNIT)
     androidTestImplementation (Config.AndroidX.ESPRESSO_CORE)

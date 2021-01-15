@@ -15,6 +15,11 @@ android {
         versionCode = ProjectProperties.VERSION_CODE
         versionName = ProjectProperties.VERSION_NAME
         multiDexEnabled = true
+        kapt {
+            arguments{
+                arg("AROUTER_MODULE_NAME",project.name)
+            }
+        }
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -58,7 +63,7 @@ dependencies {
     api(Config.AndroidX.MULTIDEX)
     //JetPack
     api (Config.JetPack.LIFECYCLE_RUNTIME_KTX)
-    annotationProcessor (Config.JetPack.LIFECYCLE_COMPILER)
+    kapt (Config.JetPack.LIFECYCLE_COMPILER)
     api(Config.JetPack.LIFECYCLE_COMMON_JAVA8)
     api(Config.JetPack.LIFECYCLE_LIVE_DATA_KTX)
     api(Config.JetPack.LIFECYCLE_VIEW_MODEL_KTX)
@@ -74,7 +79,7 @@ dependencies {
     api (Config.External.MMKV)
     api (Config.External.GSON)
     api (Config.External.AROUTER_API)
-    annotationProcessor(Config.External.AROUTER_COMPILER)
+    kapt(Config.External.AROUTER_COMPILER)
 
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)

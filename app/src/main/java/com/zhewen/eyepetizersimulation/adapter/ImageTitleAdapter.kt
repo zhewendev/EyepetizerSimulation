@@ -42,6 +42,7 @@ class ImageTitleAdapter(private val mMutableList: MutableList<ImageTitleBean>): 
             holder?.mBannerButton?.visibility = View.VISIBLE
             holder?.mBannerButton?.setOnClickListener {
                 // 跳转到主页面
+                saveMmkvValue(Constants.KEY_IS_FIRST_OPEN_APP, false)
                 JumpUtil.jumpToNative(ModuleRoute.Home.ACTIVITY_HOME,false, mutableMapOf())
             }
         } else {

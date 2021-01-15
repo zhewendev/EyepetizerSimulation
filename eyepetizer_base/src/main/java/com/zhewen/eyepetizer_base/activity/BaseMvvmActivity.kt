@@ -34,6 +34,7 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseViewModel> :
         super.onCreate(savedInstanceState)
         initViewModel()
         initDataBinding()
+        initBaseConfig()
     }
 
     /**
@@ -180,6 +181,11 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseViewModel> :
      * 失败重试,重新加载事件
      */
     protected abstract fun onRetryBtnClick()
+
+    /**
+     * Activity配置初始化
+     */
+    protected abstract fun initBaseConfig()
 
     companion object {
         private const val TAG = "BaseMvvmActivity"
