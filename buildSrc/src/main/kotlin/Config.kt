@@ -79,15 +79,16 @@ object Config {
         private const val SMART_REFRESH_LAYOUT_VERSION = "2.0.3"
         private const val AROUTER_VERSION = "1.5.1"
         private const val BADGEVIEW_VERSION = "1.1.3"
+        private const val RETROFIT_VERSION = "2.9.0"
 
 
 
-        const val LOAD_SIR = "com.kingja.loadsir:loadsir:${LOAD_SIR_VERSION}"
-        const val LOGGER = "com.orhanobut:logger:${LOGGER_VERSION}"
-        const val EASY_PERMISSION = "pub.devrel:easypermissions:${EASY_PERMISSION_VERSION}"
-        const val MMKV = "com.tencent:mmkv-static:${MMKV_VERSION}"
-        const val GSON = "com.google.code.gson:gson:${GSON_VERSION}"
-        const val BANNER = "com.youth.banner:banner:${BANNER_VERSION}"
+        const val LOAD_SIR = "com.kingja.loadsir:loadsir:${LOAD_SIR_VERSION}"   //数据加载结果开源库
+        const val LOGGER = "com.orhanobut:logger:${LOGGER_VERSION}"     //Log开源库
+        const val EASY_PERMISSION = "pub.devrel:easypermissions:${EASY_PERMISSION_VERSION}" //权限开源库
+        const val MMKV = "com.tencent:mmkv-static:${MMKV_VERSION}"  //MMKV开源库，替代SharePreference
+        const val GSON = "com.google.code.gson:gson:${GSON_VERSION}"    //Gson
+        const val BANNER = "com.youth.banner:banner:${BANNER_VERSION}"  //Banner,ViewPager2开源封装库
 
         const val SMART_REFRESH_LAYOUT_KERNEL = "com.scwang.smart:refresh-layout-kernel:${SMART_REFRESH_LAYOUT_VERSION}"    //下拉刷新核心库
         const val SMART_REFRESH_HEADER_CLASSICS = "com.scwang.smart:refresh-header-classics:${SMART_REFRESH_LAYOUT_VERSION}"    //经典刷新头
@@ -98,9 +99,12 @@ object Config {
         const val SMART_REFRESH_FOOTER_BALL = "com.scwang.smart:refresh-footer-ball:${SMART_REFRESH_LAYOUT_VERSION}"    //球脉冲加载
         const val SMART_REFRESH_FOOTER_CLASSICS = "com.scwang.smart:refresh-footer-classics:${SMART_REFRESH_LAYOUT_VERSION}"
 
-        const val AROUTER_API ="com.alibaba:arouter-api:${AROUTER_VERSION}"
+        const val AROUTER_API ="com.alibaba:arouter-api:${AROUTER_VERSION}" //ARouter路由开源库，用于模块间跳转
         const val AROUTER_COMPILER = "com.alibaba:arouter-compiler:${AROUTER_VERSION}"
-        const val BADGEVIEW = "q.rorbin:badgeview:${BADGEVIEW_VERSION}"
+        const val BADGEVIEW = "q.rorbin:badgeview:${BADGEVIEW_VERSION}"     //底部导航角标开源库
+        const val RETROFIT = "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"  //网络开源库，用于数据请求
+        const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
+
 
 
     }

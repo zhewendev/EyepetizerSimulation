@@ -80,6 +80,8 @@ dependencies {
     api (Config.External.GSON)
     api (Config.External.AROUTER_API)
     kapt(Config.External.AROUTER_COMPILER)
+    api(Config.External.RETROFIT)
+    api(Config.External.RETROFIT_CONVERTER_GSON)
 
     testImplementation(Config.AndroidX.JUNIT)
     androidTestImplementation(Config.AndroidX.EXT_JUNIT)
