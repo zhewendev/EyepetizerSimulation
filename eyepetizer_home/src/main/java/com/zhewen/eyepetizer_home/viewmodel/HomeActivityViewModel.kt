@@ -1,4 +1,4 @@
-package com.zhewen.eyepetizer_home.data.viewmodel
+package com.zhewen.eyepetizer_home.viewmodel
 
 import com.zhewen.eyepetizer_base.viewmodel.BaseViewModel
 

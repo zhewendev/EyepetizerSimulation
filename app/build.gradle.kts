@@ -60,6 +60,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     kapt(Config.JetPack.HILT_ANDROID_COMPILER)
+    implementation(Config.JetPack.HILT_VIEW_MODEL)
+    kapt(Config.JetPack.HILT_COMPILER)
 
     kapt(Config.External.AROUTER_COMPILER)
 

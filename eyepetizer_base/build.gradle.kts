@@ -57,6 +57,8 @@ dependencies {
     api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     api(Config.AndroidX.KOTLIN_STDLIB)
     api(Config.AndroidX.CORE_KTX)
+    api(Config.AndroidX.COROUTINES_CORE)
+    api(Config.AndroidX.COROUTINES_ANDROID)
     api(Config.AndroidX.APP_COMPAT)
     api(Config.AndroidX.MATERIAL)
     api(Config.AndroidX.CONSTRAINT_LAYOUT)
@@ -72,6 +74,8 @@ dependencies {
     api(Config.JetPack.NAVIGATION_DYNAMIC_FEATURES)
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
+    implementation(Config.JetPack.HILT_VIEW_MODEL)
+    kapt(Config.JetPack.HILT_COMPILER)
 
     //External
     api(Config.External.LOGGER)

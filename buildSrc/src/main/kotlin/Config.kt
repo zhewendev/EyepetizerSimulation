@@ -25,6 +25,8 @@ object Config {
         private const val ESPRESSO_CORE_VERSION = "3.3.0"
         private const val MULTIDEX_VERSION = "2.0.1"
         private const val CARDVIEW_VERSION = "1.0.0"
+        private const val COROUTINES_VERSION = "1.4.2"
+
 
         const val KOTLIN_STDLIB =
             "org.jetbrains.kotlin:kotlin-stdlib:${ProjectProperties.KOTLIN_VERSION}"
@@ -38,12 +40,15 @@ object Config {
         const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${ESPRESSO_CORE_VERSION}"
         const val MULTIDEX = "androidx.multidex:multidex:${MULTIDEX_VERSION}"
         const val CARDVIEW = "androidx.cardview:cardview:${CARDVIEW_VERSION}"
+        const val COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${COROUTINES_VERSION}"
+        const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${COROUTINES_VERSION}"
     }
 
     //JetPack相关依赖库
     object JetPack {
         private const val LIFECYCLE_VERSION = "2.2.0"
         private const val NAVIGATION_VERSION = "2.3.1"
+        private const val HILT_VIEW_MODEL_VERSION = "1.0.0-alpha02"
 
         const val LIFECYCLE_RUNTIME_KTX =
             "androidx.lifecycle:lifecycle-runtime-ktx:${LIFECYCLE_VERSION}"
@@ -64,6 +69,8 @@ object Config {
         const val HILT_ANDROID = "com.google.dagger:hilt-android:${Version.HILT_ANDROID_VERSION}"
         const val HILT_ANDROID_COMPILER =
             "com.google.dagger:hilt-android-compiler:${Version.HILT_ANDROID_VERSION}"
+        const val HILT_VIEW_MODEL = "androidx.hilt:hilt-lifecycle-viewmodel:${HILT_VIEW_MODEL_VERSION}"
+        const val HILT_COMPILER = "androidx.hilt:hilt-compiler:${HILT_VIEW_MODEL_VERSION}"
 
     }
 

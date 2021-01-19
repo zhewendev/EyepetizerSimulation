@@ -9,7 +9,7 @@ import com.zhewen.eyepetizer_common.route.ModuleRoute
 import com.zhewen.eyepetizer_common.ui.BaseFullScreenActivity
 import com.zhewen.eyepetizer_common.util.view.FragmentUtil
 import com.zhewen.eyepetizer_home.R
-import com.zhewen.eyepetizer_home.data.viewmodel.HomeActivityViewModel
+import com.zhewen.eyepetizer_home.viewmodel.HomeActivityViewModel
 import com.zhewen.eyepetizer_home.databinding.ActivityHomeBinding
 import com.zhewen.eyepetizer_home.ui.fragment.HomeFragment
 

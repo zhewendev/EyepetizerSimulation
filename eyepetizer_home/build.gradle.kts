@@ -49,6 +49,9 @@ dependencies {
     //jetpack
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
+    implementation(Config.JetPack.HILT_VIEW_MODEL)
+    kapt(Config.JetPack.HILT_COMPILER)
+
     kapt(Config.External.AROUTER_COMPILER)
     testImplementation (Config.AndroidX.JUNIT)
     androidTestImplementation (Config.AndroidX.EXT_JUNIT)

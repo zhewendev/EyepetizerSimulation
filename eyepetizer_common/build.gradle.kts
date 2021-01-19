@@ -52,6 +52,8 @@ dependencies {
     //jetpack
     implementation (Config.JetPack.HILT_ANDROID)
     kapt (Config.JetPack.HILT_ANDROID_COMPILER)
+    implementation(Config.JetPack.HILT_VIEW_MODEL)
+    kapt(Config.JetPack.HILT_COMPILER)
     //external
     api (Config.External.BANNER)
     api (Config.External.SMART_REFRESH_LAYOUT_KERNEL)

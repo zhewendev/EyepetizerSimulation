@@ -35,6 +35,8 @@ abstract class BaseMvvmActivity<V : ViewDataBinding, VM : IBaseViewModel> :
         initViewModel()
         initDataBinding()
         initBaseConfig()
+
+
     }
 
     /**

@@ -1,8 +1,8 @@
-package com.zhewen.eyepetizer_home.data.factory
+package com.zhewen.eyepetizer_home.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.zhewen.eyepetizer_home.data.viewmodel.HomeFragmentViewModel
+import com.zhewen.eyepetizer_home.viewmodel.HomeFragmentViewModel
 
 class HomeFragmentModelFactory:ViewModelProvider.NewInstanceFactory(){
 
