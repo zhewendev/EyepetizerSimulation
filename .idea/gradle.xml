@@ -14,7 +14,10 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/eyepetizer_base" />
             <option value="$PROJECT_DIR$/eyepetizer_common" />
+            <option value="$PROJECT_DIR$/eyepetizer_community" />
             <option value="$PROJECT_DIR$/eyepetizer_home" />
+            <option value="$PROJECT_DIR$/eyepetizer_notification" />
+            <option value="$PROJECT_DIR$/eyepetizer_player" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
