@@ -12,11 +12,13 @@ import com.zhewen.eyepetizer_home.R
 import com.zhewen.eyepetizer_home.viewmodel.HomeActivityViewModel
 import com.zhewen.eyepetizer_home.databinding.ActivityHomeBinding
 import com.zhewen.eyepetizer_home.ui.fragment.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 首页Activity
  */
 @Route(path = ModuleRoute.Home.ACTIVITY_HOME)
+@AndroidEntryPoint
 class HomeActivity :
     BaseFullScreenActivity<ActivityHomeBinding, HomeActivityViewModel>() {
 

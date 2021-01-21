@@ -1,7 +1,7 @@
-package com.zhewen.eyepetizer_home.data.model
+package com.zhewen.eyepetizer_common.data.model
 
 data class Author(
-    val adTrack: Any,
+    val adTrack: Any?,
     val approvedNotReadyVideoCount: Int,
     val description: String,
     val expert: Boolean,

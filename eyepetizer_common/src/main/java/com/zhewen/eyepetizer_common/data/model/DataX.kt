@@ -1,8 +1,8 @@
-package com.zhewen.eyepetizer_home.data.model
+package com.zhewen.eyepetizer_common.data.model
 
 data class DataX(
     val actionUrl: String,
-    val adTrack: List<Any>,
+    val adTrack: List<Any?>,
     val autoPlay: Boolean,
     val dataType: String,
     val description: String,
@@ -10,7 +10,7 @@ data class DataX(
     val id: Int,
     val image: String,
     val label: Label,
-    val labelList: List<Any>,
+    val labelList: List<Any?>,
     val shade: Boolean,
     val title: String
 )

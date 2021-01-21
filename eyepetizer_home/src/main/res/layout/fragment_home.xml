@@ -4,6 +4,9 @@
     xmlns:banner="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="disconverViewModel"
+            type="com.zhewen.eyepetizer_home.viewmodel.DiscoveryFragmentViewModel" />
 
     </data>
 
@@ -11,12 +14,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.youth.banner.Banner
-            android:id="@+id/home_fragment_content_banner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            banner:banner_auto_loop="false"
-            banner:banner_infinite_loop="false" />
+<!--        <com.youth.banner.Banner-->
+<!--            android:id="@+id/home_fragment_content_banner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            banner:banner_auto_loop="false"-->
+<!--            banner:banner_infinite_loop="false" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{disconverViewModel.MTopBannerModel.type}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

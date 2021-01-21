@@ -16,11 +16,6 @@ android {
         versionName = ProjectProperties.VERSION_NAME
         multiDexEnabled = true
 
-        kapt {
-            arguments{
-                arg("AROUTER_MODULE_NAME",project.name)
-            }
-        }
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -40,6 +35,13 @@ android {
     }
     buildFeatures {
         dataBinding = true
+    }
+
+    kapt{
+        arguments{
+            arg("AROUTER_MODULE_NAME",project.name)
+        }
+        generateStubs = true
     }
 }
 

@@ -1,4 +1,4 @@
-package com.zhewen.eyepetizer_home.data.model
+package com.zhewen.eyepetizer_common.data.model
 
 data class Url(
     val name: String,

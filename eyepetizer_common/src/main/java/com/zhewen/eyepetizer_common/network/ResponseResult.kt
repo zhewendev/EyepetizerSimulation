@@ -4,7 +4,7 @@ package com.zhewen.eyepetizer_common.network
  * 处理通用的网络请求结果状态
  */
 sealed class ResponseResult<out T> {
-    data class Success<out T : Any>(val data:T):ResponseResult<T>()
+    data class Success<out T>(val data:T):ResponseResult<T>()
 
     data class Failure(val throwable: Throwable?):ResponseResult<Nothing>()
 

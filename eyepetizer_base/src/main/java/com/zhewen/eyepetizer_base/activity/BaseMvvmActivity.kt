@@ -16,6 +16,7 @@ import com.zhewen.eyepetizer_base.loadsir.ErrorCallback
 import com.zhewen.eyepetizer_base.loadsir.LoadingCallback
 import com.zhewen.eyepetizer_base.loadsir.NoNetworkCallback
 import com.zhewen.eyepetizer_base.viewmodel.IBaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 

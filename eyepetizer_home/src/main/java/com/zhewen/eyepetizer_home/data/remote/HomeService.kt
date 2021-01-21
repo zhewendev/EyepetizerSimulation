@@ -1,5 +1,6 @@
 package com.zhewen.eyepetizer_home.data.remote
 
+import com.zhewen.eyepetizer_home.data.model.DiscoveryModel
 import retrofit2.http.GET
 
 /**
@@ -7,8 +8,8 @@ import retrofit2.http.GET
  */
 interface HomeService {
 
-    @GET("api/v7/index/tab/discovery")  //发现更多
-    suspend fun fetchDiscoveryPage()
+    @GET("api/v7/index/tab/discovery?")  //发现更多
+    suspend fun fetchDiscoveryPage() : DiscoveryModel
 
     @GET("api/v5/index/tab/allRec")     //每日推荐
     suspend fun fetchDailyRecommendPage()

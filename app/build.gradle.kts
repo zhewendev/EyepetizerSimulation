@@ -18,11 +18,6 @@ android {
         versionName = ProjectProperties.VERSION_NAME
         multiDexEnabled = true
 
-        kapt {
-            arguments{
-                arg("AROUTER_MODULE_NAME",project.name)
-            }
-        }
         testInstrumentationRunner = ProjectProperties.TEST_INSTRUMENTATION_RUNNER
     }
 
@@ -45,6 +40,13 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+    }
+
+    kapt{
+        arguments{
+            arg("AROUTER_MODULE_NAME",project.name)
+        }
+        generateStubs = true
     }
 }
 

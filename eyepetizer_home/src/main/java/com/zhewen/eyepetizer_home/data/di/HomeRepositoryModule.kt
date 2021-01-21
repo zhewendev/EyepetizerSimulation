@@ -1,8 +1,7 @@
 package com.zhewen.eyepetizer_home.data.di
 
 import com.zhewen.eyepetizer_home.data.remote.HomeService
-import com.zhewen.eyepetizer_home.data.repository.HomeRepository
-import com.zhewen.eyepetizer_home.data.repository.HomeRepositoryImpl
+import com.zhewen.eyepetizer_home.data.repository.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +14,19 @@ object HomeRepositoryModule {
 
     @Provides
     @Singleton
-    fun provideHomeRepository(homeService: HomeService): HomeRepository {
-        return HomeRepositoryImpl(homeService)
+    fun provideDiscoveryRepository(homeService: HomeService): DiscoveryRepositoryImpl {
+        return DiscoveryRepositoryImpl(homeService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDailyRecommendRepository(homeService: HomeService): DailyRecommendRepositoryImpl {
+        return DailyRecommendRepositoryImpl(homeService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDailyFeedRepository(homeService: HomeService): DailyFeedRepositoryImpl {
+        return DailyFeedRepositoryImpl(homeService)
     }
 }
